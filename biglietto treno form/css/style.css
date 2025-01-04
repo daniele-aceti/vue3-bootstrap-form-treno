@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#container{
+    display: flex;
+    align-items: center;
+    margin-top: 10%;
+    flex-direction: column;
+}
+
+.age, .distance{
+    width: 300px;
+    margin-bottom: 20px;
+}

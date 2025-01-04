@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+
+    </header>
+
+    <main>
+
+        <form id="container" action="#">       
+        <label for="age">Anni</label>
+        <input v-model.number="age" placeholder="Scrivi la tua età" class="age" type="number">
+        <label for="distance">Chilometri</label>
+        <input type="number" v-model.number="distance" placeholder="Quanti km vuoi percorrere?" class="distance">
+        <button  @click.prevent="send" >Invia</button>
+        
+        <div v-if="(age >= 65)">{{sale40}}</div>
+        <div v-else-if="(age <= 18)">{{sale20}}</div>
+        <div v-else>{{result}} </div>
+        {{message}}
+        </form>
+       
+
+
+    </main>
+
+
+
+    
+</body>
+
+<script>
+const { createApp, ref } = Vue
+
+    createApp({
+        setup(){
+        const message = ref("Clicca qui per calcolare il prezzo")
+        const sale20 = ref("")
+        const sale40 = ref("")
+        const result =ref( "");
+         const distance = ref("")
+        const age = ref("")
+
+        const send = () => {
+                
+          const price = distance.value * 0.21
+          message.value = ""
+          result.value = `Il prezzo finale è : ${price}€`.replace(".", ",")
+          sale20.value = `Il prezzo finale è : ${price* 0.2}€`.replace(".", ",")
+          sale40.value = `Il prezzo finale è : ${price * 0.4}€`.replace(".", ",")
+                
+            }
+                
+            return{
+                message,
+                result,
+                sale20,
+                sale40,
+                send,
+                distance,
+                age
+                }
+            }
+         
+        }).mount('#container')
+
+    </script>
+
+</html>
