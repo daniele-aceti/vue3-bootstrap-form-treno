@@ -26,7 +26,11 @@
               <p class="text-center mt-5" v-else-if = "(age <= 18)">{{sale20}}</p>
               <p class="text-center mt-5" v-else class="mt-5">{{noSale}}</p>
               <p class="text-center mt-5" >{{message}}</p>
-             
+              
+              <!--USATO V-IF E NON V-SHOW PERCHE' IL PRIMO TOGLIE DALLA PAGINA LO SPINNER IL SECONDO LO NASCONDE E BASTA-->
+  
+                <div class="d-flex justify-content-center"><div v-if="edit"  class="spinner-border" role="status"></div></div>
+              
 
         </form>
 
@@ -43,31 +47,43 @@
 
 <script>
 
-    const { createApp, ref,} = Vue
+const { createApp, ref,} = Vue
 
-  createApp({
-    setup() {
-       //DEFINISCO VARIABILI E LE RENDO REATTIVE
-        const noSale = ref("")
-        const message = ref("Clicca qui per sapere quanto costa il tuo biglietto")
-        const distance = ref("")
-        const age = ref("")
-        const sale20 = ref("")
-        const sale40 = ref("")
+createApp({
+  setup() {
+   //DEFINISCO VARIABILI E LE RENDO REATTIVE
+    const noSale = ref("")
+    const message = ref("Clicca qui per sapere quanto costa il tuo biglietto")
+    const distance = ref("")
+    const age = ref("")
+    const sale20 = ref("")
+    const sale40 = ref("")
+    const edit = ref(false)
         
 
         //FUNZIONE DEL CLICK
-     const confirm = () => {
 
-        const price = distance.value * 0.21
-        message.value = ""
-        noSale.value =  `Il prezzo del biglietto è : ${parseInt(price)}€`.replace(".", ",")
-        sale40.value =  `Il prezzo del biglietto è : ${parseInt(price) * 0.4}€`.replace(".", ",")
-        sale20.value =  `Il prezzo del biglietto è : ${parseInt(price) * 0.2}€`.replace(".", ",")
+  const confirm = () => {
+
+    edit.value = ref(true) 
+
+//INTERVALLO DI TEMPO
+    const interval = setInterval(() => {
+    edit.value = false
+    const price = distance.value * 0.21
+    message.value = ""
+    noSale.value =  `Il prezzo del biglietto è : ${parseInt(price)}€`.replace(".", ",")
+    sale40.value =  `Il prezzo del biglietto è : ${parseInt(price) * 0.4}€`.replace(".", ",")
+    sale20.value =  `Il prezzo del biglietto è : ${parseInt(price) * 0.2}€`.replace(".", ",")
+    }, 2000)
+
+         
            
         }
+        
 
       return {
+        edit,
         sale20,
         sale40,
         noSale,
