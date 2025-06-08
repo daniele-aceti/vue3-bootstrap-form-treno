@@ -26,3 +26,14 @@
 - **Linguaggio:** JavaScript (ES6+)  
 
 ---
+
+📌 Note
+Spinto da una forte curiosità personale ho sperimentato il framework vue, questo progetto è stato sviluppato a scopo didattico, con l’obiettivo di:
+
+Sperimentare l’uso di Vue 3
+
+Integrare Bootstrap
+
+Migliorare l’organizzazione del codice tramite componenti
+
+Lavorare con eventi e form
