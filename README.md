@@ -1,5 +1,7 @@
 # 🚆 Biglietto Treno - Vue 3 + Bootstrap
 
+📅 Ultimo aggiornamento 05/01/2025
+
 **Vue 3** • **Bootstrap 5** • **JavaScript** 
 
 > Applicazione frontend realizzata con Vue 3 per simulare la generazione di un biglietto del treno in base a distanza e fascia d’età, con sconti e UI responsive.
